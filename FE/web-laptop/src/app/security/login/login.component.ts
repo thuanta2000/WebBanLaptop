@@ -90,6 +90,9 @@ export class LoginComponent implements OnInit {
         if (account.role == 'ROLE_ADMIN'){
           this.alertService.showAlertSuccess("Chào Mừng ADMIN!");
           this.router.navigateByUrl("/listEmployee").then();
+        }else if (account.role == 'ROLE_NV'){
+          this.alertService.showAlertSuccess("Chào Mừng Nhân Viên " +account.userName+ "!");
+          this.router.navigateByUrl("/listCustomer").then();
         }else {
           this.alertService.showAlertSuccess("Chào Mừng " +account.userName+ "!");
           this.router.navigateByUrl("/").then();

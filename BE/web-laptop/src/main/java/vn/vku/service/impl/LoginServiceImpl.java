@@ -50,6 +50,10 @@ public class LoginServiceImpl implements LoginService {
                 role = "ROLE_USER";
                 break;
             }
+            else if ("ROLE_NV".equals(authority.getAuthority())){
+                role = "ROLE_NV";
+                break;
+            }
         }
         if("".equals(role)){
             return null;

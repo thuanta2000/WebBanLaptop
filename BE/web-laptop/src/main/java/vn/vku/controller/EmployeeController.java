@@ -7,6 +7,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
@@ -81,7 +82,10 @@ public class EmployeeController {
             return new ResponseEntity<>(bindingResult.getFieldErrors(),
                     HttpStatus.NOT_ACCEPTABLE);
         }
-        Account account = new Account(accountEmployee.getUserName(), accountEmployee.getPassword());
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String pass = passwordEncoder.encode(accountEmployee.getPassword());
+        System.out.println(pass);
+        Account account = new Account(accountEmployee.getUserName(), pass);
         accountService.save(account);
         AccountRoleKey accountRoleKey = new AccountRoleKey(account.getUserName(), 1);
         Role role = roleService.findById(1);

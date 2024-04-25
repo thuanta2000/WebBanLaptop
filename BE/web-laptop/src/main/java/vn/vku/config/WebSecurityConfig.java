@@ -59,7 +59,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 "/product/getBinhLuan/**","/change-password","/product/searchItem2").permitAll()
                 .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                 .antMatchers("/employee/**","/bill/listBill"
-                        ,"/customer/listCustomer","/employee/listEmployee","/product/listProduct", "/product/**", "/customer/**","/bill/**").hasAnyRole( "ADMIN")
+                        ,"/customer/listCustomer","/employee/listEmployee","/product/listProduct", "/product/**", "/customer/**","/bill/**").hasAnyRole( "ADMIN","NV")
                 .anyRequest().authenticated().and().
                 exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and().
                 sessionManagement()
