@@ -28,7 +28,7 @@ export class DeleteCustomerComponent implements OnInit {
   delete() {
     this.customerService.deleteCustomer(this.id).subscribe(() => {
       this.dialog.close();
-      this.alertService.showAlertSuccess('Xóa nhân viên thành công!');
+      this.alertService.showAlertSuccess('Xóa khách hàng thành công!');
     });
   }
 }
