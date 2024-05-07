@@ -4,6 +4,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import vn.vku.entity.Bill;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface BillService {
@@ -18,4 +19,6 @@ public interface BillService {
     List<Bill> findByIdCustomer(String id);
 
     Page<Bill> getSearchItem(String itemSearch, Pageable pageable);
+
+    List<Bill> getListOrder(LocalDate startDate, LocalDate endDate);
 }

@@ -54,6 +54,8 @@ import { ChartComponent } from './bill/chart/chart.component';
 import {StarRatingModule} from "angular-star-rating";
 import {RatingModule} from "ng-starrating";
 import { ChangePasswordComponent } from './security/change-password/change-password.component';
+import {NgApexchartsModule} from "ng-apexcharts";
+import {DatePipe} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -113,9 +115,10 @@ import { ChangePasswordComponent } from './security/change-password/change-passw
     MatListModule,
     MatIconModule,
     StarRatingModule.forRoot(),
-    RatingModule
+    RatingModule,
+    NgApexchartsModule
   ],
-  providers: [],
+  providers: [DatePipe],
   exports: [
     HomeAdminComponent
   ],

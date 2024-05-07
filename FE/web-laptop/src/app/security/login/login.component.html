@@ -33,13 +33,11 @@
                    [ngClass]="(login.password?.touched || isSubmit) ? (login.password?.invalid ? 'is-invalid' : '') : ''">
             <div class="invalid-feedback px-4" *ngIf="login.password?.errors?.required">Mật khẩu không được để trống.</div>
           </div>
-          <div class="custom-control custom-checkbox mr-sm-2 pl-5 mt-2 mx-4">
-            <input type="checkbox" class="custom-control-input" id="customControlAutosizing" formControlName="rememberMe">
-            <label class="custom-control-label" for="customControlAutosizing">Ghi nhớ đăng nhập</label>
-            <span>
-              <a class="text-decoration-none ml-lg-5" routerLink="/register" >Tạo mới tài khoản</a>
+<!--            <input type="checkbox" class="custom-control-input" id="customControlAutosizing" formControlName="rememberMe">-->
+<!--            <label class="custom-control-label" for="customControlAutosizing">Ghi nhớ đăng nhập</label>-->
+            <span class="mt-1 ml-1">
+              <a class="text-decoration-none" style="margin-right: 100px" routerLink="/register" >Tạo mới tài khoản</a>
             </span>
-          </div>
           <div class="d-flex justify-content-center mt-3">
             <button type="submit" class="btn btn-login btn-secondary ">Đăng nhập</button>
           </div>

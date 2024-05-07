@@ -49,4 +49,7 @@ export class BillService {
   getSearchByName(name:string,page:number):Observable<any>{
     return this.http.get<any>(this.API+'/searchByName?name='+name+'&page=' +page,this.httpOptions)
   }
+  getListStatistic(startDate:string,endDate:string):Observable<any>{
+    return this.http.get<any>(this.API+'/statisticOrder?start=' + startDate + '&end=' + endDate,this.httpOptions);
+  }
 }

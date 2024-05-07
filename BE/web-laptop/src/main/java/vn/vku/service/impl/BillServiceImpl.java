@@ -8,6 +8,7 @@ import vn.vku.entity.Bill;
 import vn.vku.repository.BillRepository;
 import vn.vku.service.BillService;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -43,5 +44,10 @@ public class BillServiceImpl implements BillService {
     @Override
     public Page<Bill> getSearchItem(String itemSearch, Pageable pageable) {
         return this.billRepository.findByName(itemSearch,pageable);
+    }
+
+    @Override
+    public List<Bill> getListOrder(LocalDate startDate, LocalDate endDate) {
+        return this.billRepository.getList(startDate,endDate);
     }
 }

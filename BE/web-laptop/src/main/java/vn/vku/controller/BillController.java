@@ -16,7 +16,9 @@ import vn.vku.entity.*;
 import vn.vku.service.*;
 
 import javax.validation.Valid;
+import java.text.ParseException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @CrossOrigin("http://localhost:4200")
@@ -114,6 +116,22 @@ public class BillController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(bills, HttpStatus.OK);
+    }
+    @GetMapping("/statisticOrder")
+    public ResponseEntity<List<Bill>> listResponseEntity(@RequestParam(value = "start", required = false) String start,
+                                                         @RequestParam(value = "end", required = false) String end) throws ParseException {
+        if (start == null || end == null || start.equals("") || end.equals("")) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        DateTimeFormatter formatTime = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate startDate = LocalDate.parse(start, formatTime);
+        LocalDate endDate = LocalDate.parse(end, formatTime);
+        List<Bill> ordersList = this.billService.getListOrder(startDate, endDate);
+
+        if (ordersList.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(ordersList, HttpStatus.OK);
     }
 
 }
