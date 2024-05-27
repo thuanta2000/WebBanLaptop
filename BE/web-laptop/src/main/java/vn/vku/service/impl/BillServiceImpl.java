@@ -2,7 +2,9 @@ package vn.vku.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import vn.vku.entity.Bill;
 import vn.vku.repository.BillRepository;
@@ -15,6 +17,13 @@ import java.util.List;
 public class BillServiceImpl implements BillService {
     @Autowired
     BillRepository billRepository;
+
+    @Override
+    public Page<Bill> getAllBillSort(Pageable pageable) {
+        Sort sort = Sort.by("status").ascending(); // hoặc .descending()
+        Pageable sortedPageable = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(), sort);
+        return billRepository.findAll(sortedPageable);
+    }
 
     @Override
     public Page<Bill> getAllBill(Pageable pageable) {

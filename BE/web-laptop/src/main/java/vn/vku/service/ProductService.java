@@ -8,6 +8,9 @@ import vn.vku.entity.Product;
 import java.util.List;
 
 public interface ProductService {
+
+    Page<Product> getAllProductSort(Pageable pageable);
+
     Page<Product> getAllProduct(Pageable pageable);
 
     Product findById(int id);

@@ -2,7 +2,9 @@ package vn.vku.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import vn.vku.dto.ProductDTO;
 import vn.vku.entity.Product;
@@ -25,6 +27,14 @@ public class ProductServiceImpl implements ProductService {
 
     @Autowired
     ProductTypeRepository productTypeRepository;
+
+    @Override
+    public Page<Product> getAllProductSort(Pageable pageable) {
+        Sort sort = Sort.by("quantity").ascending(); // hoặc .descending() nếu muốn sắp xếp giảm dần
+        Pageable sortedPageable = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(), sort);
+        return productRepository.findAll(sortedPageable);
+    }
+
     @Override
     public Page<Product> getAllProduct(Pageable pageable) {
         return productRepository.findAll(pageable);

@@ -8,6 +8,9 @@ import java.time.LocalDate;
 import java.util.List;
 
 public interface BillService {
+
+    Page<Bill> getAllBillSort(Pageable pageable);
+
     Page<Bill> getAllBill(Pageable pageable);
 
     Bill findById(int id);
