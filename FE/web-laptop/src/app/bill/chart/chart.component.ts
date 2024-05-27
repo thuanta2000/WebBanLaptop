@@ -14,6 +14,7 @@ import {
   ApexPlotOptions,
   ApexTitleSubtitle
 } from 'ng-apexcharts';
+import {Title} from "@angular/platform-browser";
 
 export type ChartOptions = {
   series: ApexAxisChartSeries;
@@ -88,10 +89,12 @@ export class ChartComponent implements OnInit {
   expectedMoney: number[] = [];
   bills: IBill[] = [];
   char: any;
-  constructor(private datePipe: DatePipe, private billService: BillService) {
+  constructor(private datePipe: DatePipe, private billService: BillService, private titleService: Title) {
   }
 
+
   ngOnInit(): void {
+    this.titleService.setTitle("Thống Kê Doanh Thu");
     this.checkDateForm = new FormGroup({
       checkStartDate: new FormControl('', [Validators.required]),
       checkEndDate: new FormControl('',[Validators.required])
