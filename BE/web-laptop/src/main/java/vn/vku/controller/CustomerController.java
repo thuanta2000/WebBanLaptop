@@ -104,8 +104,8 @@ public class CustomerController {
 //        String htmlMsg = "Chào mừng Email: " + accountCustomer.getEmail() + "\n" + "Tài khoản đăng ký: " + accountCustomer.getUserName() +
 //                "\n" + "Mật khẩu: "+ accountCustomer.getPassword() + "\n" + "Vui lòng truy cập vào link: http://localhost:4200/login " +
 //                "để đăng nhập" + "\n" + "Xin cám ơn!";
-//        String subject = "Wellcome, you have successfully registered an account at LaptopTH";
-//        sendEmail("LaptopTH.vku@gmail.com",accountCustomer.getEmail(),subject,htmlMsg);
+//        String subject = "Wellcome, you have successfully registered an account at LaptopTLD";
+//        sendEmail("LaptopTLD.vku@gmail.com",accountCustomer.getEmail(),subject,htmlMsg);
         HttpHeaders headers = new HttpHeaders();
         return new ResponseEntity<>(headers, HttpStatus.CREATED);
     }
