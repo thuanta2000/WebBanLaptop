@@ -94,7 +94,7 @@ export class ChartComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.titleService.setTitle("Thống Kê Doanh Thu");
+    //this.titleService.setTitle("");
     this.checkDateForm = new FormGroup({
       checkStartDate: new FormControl('', [Validators.required]),
       checkEndDate: new FormControl('',[Validators.required])
